@@ -1,0 +1,7 @@
+name: "github action wrapper around jira-cli"
+description: "run jira-cli in github actions"
+author: "namp10010"
+runs:
+  using: "docker"
+  image: "docker://ghcr.io/ankitpokhrel/jira-cli:latest"
+  entrypoint: "/bin/jira"

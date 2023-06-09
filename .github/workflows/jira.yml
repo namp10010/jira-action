@@ -1,0 +1,21 @@
+name: Integration Test
+on: [push]
+jobs:
+  jira:
+    runs-on: ubuntu-latest
+    env:
+      JIRA_API_TOKEN: ${{ secrets.ATLASIN_TOKEN }}
+      JIRA_PROJECT: "GHIN"
+      JIRA_BOARD: "GHIN board"
+    steps:
+      - uses: actions/checkout@master
+      - name: init
+        id: init
+        uses: namp10010/jira-action@master
+        with:
+          args: 'init --installation cloud --server ${{ secrets.ATLASIN_BASE_URL }} --login ${{ secrets.ATLASIN_USERNAME }} --project "${{ env.JIRA_PROJECT }}" --board "${{ env.JIRA_BOARD}}"'
+      - name: comment
+        id: comment
+        uses: namp10010/jira-action@master
+        with:
+          args: 'issue comment add GHIN-1 --template - "hello world from github actions"'
