@@ -11,11 +11,11 @@ jobs:
       - uses: actions/checkout@master
       - name: init
         id: init
-        uses: namp10010/jira-action@master
+        uses: namp10010/jira-action@v0.0.1
         with:
           args: 'init --installation cloud --server ${{ secrets.ATLASIN_BASE_URL }} --login ${{ secrets.ATLASIN_USERNAME }} --project "${{ env.JIRA_PROJECT }}" --board "${{ env.JIRA_BOARD}}"'
       - name: comment
         id: comment
-        uses: namp10010/jira-action@master
+        uses: namp10010/jira-action@v0.0.1
         with:
           args: 'issue comment add GHIN-1 --template - "hello world from github actions"'
