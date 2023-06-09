@@ -23,6 +23,15 @@ To use `jira-action` in your workflow, add the following steps
           args: 'issue comment add GHIN-1 --template - "hello world from github actions"'
 ```
 
-**The `init` step is always required to setup the jira-cli environment**
+**The `init` step above is always required to setup the jira-cli environment. It will create a temporary configuration that can be used for subsequent commands**
 
 A working example can be found in [this workflow](.github/workflows/jira.yml).
+
+### Commands in jira-cli
+
+Check out [jira-cli commands](https://github.com/ankitpokhrel/jira-cli#commands) for more details.
+
+`jira-cli` commands are mostly interactive, meaning they will ask for user inputs. To make it work in GitHub Action, you will need to use the `--template` flag.
+
+For better debugging, it is recommended that you test your `jira-cli` command locally before using it in the workflow.
+
